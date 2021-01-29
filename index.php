@@ -18,21 +18,21 @@
             'Dinamo Sassari'
         ],
         'puntiCasa' => [
-            '83',
-            '77',
-            '88',
-            '89',
-            '107',
-            '82'
+            83,
+            77,
+            88,
+            89,
+            107,
+            82
 
         ],
         'puntiOspiti' => [
-            '74',
-            '82',
-            '84',
-            '90',
-            '83',
-            '103'
+            74,
+            82,
+            84,
+            90,
+            83,
+            103
         ]
     ];
 ?>
@@ -47,6 +47,9 @@
         p{
             display:inline-block;
         }
+        span.red{
+            color : red;
+        }
     </style>
 </head>
 <body>
@@ -55,17 +58,27 @@
         <h2>Risultati Lega Basket Serie A</h2>
         <?php 
             for ($i=0; $i <count($matches['casa']) ; $i++) { 
-                echo "<p class='match'>" . $matches['casa'][$i] . ' - ' .
-                $matches['ospiti'][$i] . "</p>" . ' ' .
-                "<p class='risultato'>" . '| ' . $matches['puntiCasa'][$i] . ' - ' .
-                $matches['puntiOspiti'][$i] . "</p>" . "<br />";
+                if($matches['puntiCasa'][$i] > $matches['puntiOspiti'][$i]){
+                    echo 
+                    "<p class='match'>" . $matches['casa'][$i] . ' - ' . $matches['ospiti'][$i] . "</p>" . ' ' .
+                    "<p class='risultato'>" . '| ' . "<span class='red'>" . $matches['puntiCasa'][$i].  "</span>" . "</p>" . ' - ' .
+                    "<p class='risultato'>" . $matches['puntiOspiti'][$i] . "</p>" . "<br />";
+                }elseif($matches['puntiCasa'][$i] < $matches['puntiOspiti'][$i]){
+                    echo 
+                    "<p class='match'>" . $matches['casa'][$i] . ' - ' . $matches['ospiti'][$i] . "</p>" . ' ' .
+                    "<p class='risultato'>" . '| ' . $matches['puntiCasa'][$i].  "</p>" . ' - ' .
+                    "<p class='risultato'>" . "<span class='red'>" . $matches['puntiOspiti'][$i] . "</span>" . "</p>" . "<br />";
+                }else{
+                    echo 
+                    "<p class='match'>" . $matches['casa'][$i] . ' - ' . $matches['ospiti'][$i] . "</p>" . ' ' .
+                    "<p class='risultato'>" . '| ' . $matches['puntiCasa'][$i].  "</p>" . ' - ' .
+                    "<p class='risultato'>" . $matches['puntiOspiti'][$i] . "</p>" . "<br />";
+                }
             };
         ?>
     </div>
-
 </body>
 </html>
-
 
 <!-- PHP SNACK 2 -->
 <!DOCTYPE html>
@@ -83,10 +96,10 @@
 
     if(strpos($mail, '@') !== false && strpos($mail, ".") !== false && is_int($age)
     && strlen($name) > 3){
-        echo "Accesso Riuscito";
+        echo '<h1>' . "Accesso Riuscito" . '</h1>';
 
     } else {
-        echo "Accesso Negato";
+        echo '<h1>' . "Accesso Negato" . '</h1>';
     }
 
     ?>
