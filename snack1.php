@@ -79,30 +79,3 @@
     </div>
 </body>
 </html>
-
-<!-- PHP SNACK 2 -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php 
-    $mail = $_GET["mail"];
-    $age = (int)$_GET["age"];
-    $name = $_GET["name"];
-
-    if(strpos($mail, '@') !== false && strpos($mail, ".") !== false && is_int($age)
-    && strlen($name) > 3){
-        echo '<h1>' . "Accesso Riuscito" . '</h1>';
-
-    } else {
-        echo '<h1>' . "Accesso Negato" . '</h1>';
-    }
-
-    ?>
-
-</body>
-</html>
